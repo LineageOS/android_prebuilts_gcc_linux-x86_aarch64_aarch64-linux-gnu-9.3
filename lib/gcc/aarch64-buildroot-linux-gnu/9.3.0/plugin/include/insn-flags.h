@@ -3433,10 +3433,12 @@
 #define HAVE_aarch64_compare_and_swaphi 1
 #define HAVE_aarch64_compare_and_swapsi 1
 #define HAVE_aarch64_compare_and_swapdi 1
+#define HAVE_aarch64_compare_and_swapti 1
 #define HAVE_aarch64_compare_and_swapqi_lse (TARGET_LSE)
 #define HAVE_aarch64_compare_and_swaphi_lse (TARGET_LSE)
 #define HAVE_aarch64_compare_and_swapsi_lse (TARGET_LSE)
 #define HAVE_aarch64_compare_and_swapdi_lse (TARGET_LSE)
+#define HAVE_aarch64_compare_and_swapti_lse (TARGET_LSE)
 #define HAVE_aarch64_atomic_exchangeqi 1
 #define HAVE_aarch64_atomic_exchangehi 1
 #define HAVE_aarch64_atomic_exchangesi 1
@@ -3561,10 +3563,12 @@
 #define HAVE_aarch64_load_exclusivehi 1
 #define HAVE_aarch64_load_exclusivesi 1
 #define HAVE_aarch64_load_exclusivedi 1
+#define HAVE_aarch64_load_exclusive_pair 1
 #define HAVE_aarch64_store_exclusiveqi 1
 #define HAVE_aarch64_store_exclusivehi 1
 #define HAVE_aarch64_store_exclusivesi 1
 #define HAVE_aarch64_store_exclusivedi 1
+#define HAVE_aarch64_store_exclusive_pair 1
 #define HAVE_aarch64_pred_movvnx16qi (TARGET_SVE \
    && (register_operand (operands[0], VNx16QImode) \
        || register_operand (operands[2], VNx16QImode)))
@@ -4956,6 +4960,7 @@
 #define HAVE_atomic_compare_and_swaphi 1
 #define HAVE_atomic_compare_and_swapsi 1
 #define HAVE_atomic_compare_and_swapdi 1
+#define HAVE_atomic_compare_and_swapti 1
 #define HAVE_atomic_exchangeqi 1
 #define HAVE_atomic_exchangehi 1
 #define HAVE_atomic_exchangesi 1
@@ -5902,8 +5907,8 @@ extern rtx        gen_reg_stack_protect_address_si        (rtx);
 extern rtx        gen_reg_stack_protect_address_di        (rtx);
 extern rtx        gen_stack_protect_set_si                (rtx, rtx);
 extern rtx        gen_stack_protect_set_di                (rtx, rtx);
-extern rtx        gen_stack_protect_test_si               (rtx, rtx, rtx);
-extern rtx        gen_stack_protect_test_di               (rtx, rtx, rtx);
+extern rtx        gen_stack_protect_test_si               (rtx, rtx);
+extern rtx        gen_stack_protect_test_di               (rtx, rtx);
 extern rtx        gen_set_fpcr                            (rtx);
 extern rtx        gen_get_fpcr                            (rtx);
 extern rtx        gen_set_fpsr                            (rtx);
@@ -8196,10 +8201,12 @@ extern rtx        gen_aarch64_compare_and_swapqi          (rtx, rtx, rtx, rtx, r
 extern rtx        gen_aarch64_compare_and_swaphi          (rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_compare_and_swapsi          (rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_compare_and_swapdi          (rtx, rtx, rtx, rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_compare_and_swapti          (rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_compare_and_swapqi_lse      (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_compare_and_swaphi_lse      (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_compare_and_swapsi_lse      (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_compare_and_swapdi_lse      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_compare_and_swapti_lse      (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_atomic_exchangeqi           (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_atomic_exchangehi           (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_atomic_exchangesi           (rtx, rtx, rtx, rtx);
@@ -8324,10 +8331,12 @@ extern rtx        gen_aarch64_load_exclusiveqi            (rtx, rtx, rtx);
 extern rtx        gen_aarch64_load_exclusivehi            (rtx, rtx, rtx);
 extern rtx        gen_aarch64_load_exclusivesi            (rtx, rtx, rtx);
 extern rtx        gen_aarch64_load_exclusivedi            (rtx, rtx, rtx);
+extern rtx        gen_aarch64_load_exclusive_pair         (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_store_exclusiveqi           (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_store_exclusivehi           (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_store_exclusivesi           (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_store_exclusivedi           (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_store_exclusive_pair        (rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_pred_movvnx16qi             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_pred_movvnx8hi              (rtx, rtx, rtx);
 extern rtx        gen_aarch64_pred_movvnx4si              (rtx, rtx, rtx);
@@ -9655,6 +9664,7 @@ extern rtx        gen_atomic_compare_and_swapqi           (rtx, rtx, rtx, rtx, r
 extern rtx        gen_atomic_compare_and_swaphi           (rtx, rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_compare_and_swapsi           (rtx, rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_compare_and_swapdi           (rtx, rtx, rtx, rtx, rtx, rtx, rtx, rtx);
+extern rtx        gen_atomic_compare_and_swapti           (rtx, rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_exchangeqi                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_exchangehi                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_exchangesi                   (rtx, rtx, rtx, rtx);
